@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-class GraphQLScalars {
+class GraphQLScalarConfiguration {
 
     /**
      * https://github.com/QUSHLEE
@@ -26,13 +26,7 @@ class GraphQLScalars {
                 }
             }
 
-            override fun parseLiteral(input: Any): ObjectId {
-                return when (input) {
-                    is graphql.language.StringValue -> ObjectId(input.value)
-                    is String -> ObjectId(input)
-                    else -> throw Exception("wrong input type")
-                }
-            }
+            override fun parseLiteral(input: Any) = parseValue(input)
         }
 
         return GraphQLScalarType.newScalar()
