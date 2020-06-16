@@ -1,0 +1,15 @@
+type User {
+    id: ObjectId
+    createdDate: DateTime
+    lastModifiedDate: DateTime
+
+    email: String
+    name: String
+    role: UserRole
+}
+
+enum UserRole {
+    ROLE_TEMPORARY
+    ROLE_USER
+    ROLE_ADMIN
+}

@@ -1,0 +1,15 @@
+scalar ObjectId
+scalar DateTime
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    currentUser: User
+}
+
+type Mutation {
+
+}

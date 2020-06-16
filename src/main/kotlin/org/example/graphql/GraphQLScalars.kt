@@ -4,9 +4,9 @@ import graphql.schema.Coercing
 import graphql.schema.GraphQLScalarType
 import org.bson.types.ObjectId
 import org.springframework.context.annotation.Bean
-import org.springframework.stereotype.Component
+import org.springframework.context.annotation.Configuration
 
-@Component
+@Configuration
 class GraphQLScalars {
 
     /**
@@ -14,16 +14,8 @@ class GraphQLScalars {
      * from https://github.com/codeit-kr
      */
     @Bean
-    fun objectId(): GraphQLScalarType {
-        return GraphQLScalarType.newScalar()
-            .name("ObjectId")
-            .coercing(coercing())
-            .description("[`ObjectId`] Scalar represents ObjectId of Mongo documents.")
-            .build()
-    }
-
-    private fun coercing(): Coercing<ObjectId, String> {
-        return object : Coercing<ObjectId, String> {
+    fun objectIdScalar(): GraphQLScalarType {
+        val coercing = object : Coercing<ObjectId, String> {
             override fun serialize(input: Any) = input.toString()
 
             override fun parseValue(input: Any): ObjectId {
@@ -42,5 +34,11 @@ class GraphQLScalars {
                 }
             }
         }
+
+        return GraphQLScalarType.newScalar()
+            .name("ObjectId")
+            .coercing(coercing)
+            .description("[`ObjectId`] Scalar represents ObjectId of Mongo documents.")
+            .build()
     }
 }
