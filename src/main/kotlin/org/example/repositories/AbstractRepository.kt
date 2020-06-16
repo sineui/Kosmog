@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.core.query.Update
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
-
 abstract class AbstractRepository<T : MongoDocument>(
     private val collectionName: String,
     private val klass: Class<T>
@@ -22,7 +21,6 @@ abstract class AbstractRepository<T : MongoDocument>(
     private lateinit var template: ReactiveMongoTemplate
 
     open fun find(query: Query): Flux<T> = template.find(query, klass, collectionName)
-    open fun <S> findAs(query: Query): Flux<S> = find(query).map { it as S }
     open fun exists(query: Query): Mono<Boolean> = template.exists(query, klass, collectionName)
     open fun findOne(query: Query): Mono<T> = template.findOne(query, klass, collectionName)
     open fun findById(id: ObjectId): Mono<T> = template.findById(id, klass, collectionName)
