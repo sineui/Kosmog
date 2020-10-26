@@ -1,0 +1,4 @@
+input UserRegisterRequest {
+    email: String,
+    password: String
+}

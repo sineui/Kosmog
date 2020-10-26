@@ -2,18 +2,18 @@ group = "org.example"
 version = "1.0-SNAPSHOT"
 
 plugins {
-    kotlin("jvm") version "1.3.72"
-    kotlin("kapt") version "1.3.72"
+    kotlin("jvm") version "1.4.10"
+    kotlin("kapt") version "1.4.10"
 
     // https://plugins.gradle.org/plugin/org.jetbrains.kotlin.plugin.spring
-    kotlin("plugin.spring") version "1.3.72"
+    kotlin("plugin.spring") version "1.4.10"
     // https://plugins.gradle.org/plugin/org.springframework.boot
-    id("org.springframework.boot") version "2.3.1.RELEASE"
+    id("org.springframework.boot") version "2.3.4.RELEASE"
     // https://plugins.gradle.org/plugin/io.spring.dependency-management
-    id("io.spring.dependency-management") version "1.0.9.RELEASE"
+    id("io.spring.dependency-management") version "1.0.10.RELEASE"
     // https://github.com/jlleitschuh/ktlint-gradle
-    id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
-    id("org.jlleitschuh.gradle.ktlint-idea") version "9.2.1"
+    id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
+    id("org.jlleitschuh.gradle.ktlint-idea") version "9.4.1"
 }
 
 configurations {
@@ -35,7 +35,7 @@ dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
 
     // Project Reactor
-    implementation("io.projectreactor:reactor-core:3.3.6.RELEASE")
+    implementation("io.projectreactor:reactor-core:3.3.10.RELEASE")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions:1.0.2.RELEASE")
 
     // GraphQL
@@ -49,7 +49,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     // ktlint
-    implementation("org.jlleitschuh.gradle:ktlint-gradle:9.2.1")
+    implementation("org.jlleitschuh.gradle:ktlint-gradle:9.4.1")
 }
 
 tasks {

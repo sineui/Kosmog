@@ -23,7 +23,7 @@ class GraphQLConfiguration(
 
     private fun sdl(): String {
         return PathMatchingResourcePatternResolver()
-            .getResources("classpath*:graphqls/*.*")
+            .getResources("classpath*:graphqls/**/.graphql")
             .fold(StringBuilder()) { sb, graphql ->
                 graphql.inputStream.use { sb.append(it.readBytes().decodeToString()) }
             }.toString()
